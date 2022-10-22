@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+This code is submitted by: Sneha Jaiswal
+                           Class Roll No.: 27
+                           Branch: CS
+                           Section: C
+ -->
+
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="logo.png">
+    <title>Welcome To KIET Registration Form</title>
+    <style>
+        body {
+            margin: 0px;
+            background-color: #296a8e;
+            color: black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .heading {
+            text-align: center;
+        }
+
+        #regsForm {
+            margin-top: 5rem;
+            overflow: hidden;
+
+        }
+
+        #regsForm table {
+            font-family: "Comic Sans MS", cursive;
+        }
+
+        #regsForm .reg {
+            height: 23px;
+            width: 250px;
+            border: 1px solid #5fc5d9;
+            color: #000000;
+            border-left: 5px solid #f7f7f7;
+            opacity: 0.9;
+        }
+
+        #regsForm .reg:focus {
+            height: 28px;
+            border: 1px solid #be3ba6;
+        }
+
+
+        #regsForm .btn {
+            width: 135px;
+            height: 28px;
+            outline: none;
+
+            font-weight: bold;
+            border: 0px solid #54f224;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #d7f035;
+            transition: 1s;
+        }
+
+        #regsForm .btn:hover {
+            background-color: #00c738;
+            transition: 1s;
+        }
+    </style>
+    <script>
+        function registration() {
+
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("mail").value;
+            var uname = document.getElementById("uname").value;
+            var pwd = document.getElementById("pass").value;
+            var cpwd = document.getElementById("confirmPass").value;
+
+            var pwd_expression = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
+            var letters = /^[A-Za-z]+$/;
+            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+            if (name == '') {
+                alert('Please enter your name');
+            }
+            else if (!letters.test(name)) {
+                alert('Name field required only alphabet characters');
+            }
+            else if (email == '') {
+                alert('Please enter your user email id');
+            }
+            else if (!filter.test(email)) {
+                alert('Invalid email');
+            }
+            else if (uname == '') {
+                alert('Please enter the user name.');
+            }
+            else if (!letters.test(uname)) {
+                alert('User name field required only alphabet characters');
+            }
+            else if (pwd == '') {
+                alert('Please enter Password');
+            }
+            else if (cpwd == '') {
+                alert('Enter Confirm Password');
+            }
+            else if (!pwd_expression.test(pwd)) {
+                alert('Upper case, Lower case, Special character and Numeric letter are required in Password filed');
+            }
+            else if (pwd != cpwd) {
+                alert('Password not Matched');
+            }
+            else if (document.getElementById("confirmPass").value.length < 5) {
+                alert('Password minimum length is 5');
+            }
+            else if (document.getElementById("confirmPass").value.length > 14) {
+                alert('Password max length is 14');
+            }
+            else {
+                alert('Thank You for Login & You are Redirecting to KIET Group Of Instituion Website');
+
+                window.location = "https://www.kiet.edu/";
+            }
+        }
+        function clearFunc() {
+            document.getElementById("name").value = "";
+            document.getElementById("mail").value = "";
+            document.getElementById("uname").value = "";
+            document.getElementById("pass").value = "";
+            document.getElementById("confirmPass").value = "";
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div id="regsForm">
+        <div class="heading">
+            <h2>Create Your Account</h2>
+        </div>
+
+        <div class="login">
+            <table align="center" cellpadding="8" border="0">
+                <tr>
+                    <td align="right">Enter Name :</td>
+                    <td><input type="text" placeholder="Enter your name here" id="name" class="reg" /></td>
+                </tr>
+                <tr>
+                    <td align="right">Enter Email ID :</td>
+                    <td><input type="text" placeholder="Enter your Email ID here" id="mail" class="reg" /></td>
+                </tr>
+                <tr>
+                    <td align="right">Enter Username :</td>
+                    <td><input type="text" placeholder="Enter Username here" id="uname" class="reg" /></td>
+                </tr>
+                <tr>
+                    <td align="right">Enter Password :</td>
+                    <td><input type="password" placeholder="Enter Password here" id="pass" class="reg" /></td>
+                </tr>
+                <tr>
+                    <td align="right">Enter Confirm Password :</td>
+                    <td><input type="password" placeholder="Enter Password here" id="confirmPass" class="reg" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="reset" value="Clear Form" onclick="clearFunc()" id="res" class="btn" />
+                        <input type="submit" value="Create Account" class="btn" onclick="registration()" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
